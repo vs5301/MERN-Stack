@@ -1,0 +1,5 @@
+/* child selector */
+
+div > p{
+    color: red;
+}

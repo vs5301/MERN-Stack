@@ -1,0 +1,17 @@
+/* element selector */
+
+h2{
+    color: red;
+}
+
+p{
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+div{
+    background: green;
+    color: white;
+    padding: 10px;
+}
