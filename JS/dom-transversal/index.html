@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dom Transversal</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="container">
+            <h2>Dynamic To-Do</h2>
+            <!-- Tasks will be appended here -->
+        </div>
+        <div id="studentList">
+            <h3>Students List</h3>
+            <hr>
+            <!-- Students will be inserted here -->
+        </div>
+
+        <div id="articleContainer">
+            <div class="article" id="article1">This is Article 1</div>
+            <div class="article" id="article2">This is Article 2</div>
+            <div class="article" id="article3">This is Article 3</div>
+        </div>
+
+        <ul id="fruitList">
+            <!-- Fruits will be inserted here -->
+        </ul>
+
+        <div id="message"></div>
+
+        <br><br>
+
+        <div id="container">
+            <p id="textElement">Modify my class!</p>
+            <button onclick="addClass()">Add Class</button>
+            <button onclick="removeClass()">Remove Class</button>
+            <button onclick="toggleClass()">Toggle Class</button>
+            <button onclick="replaceClass()">Replace Class</button>
+            <button onclick="checkContains()">Contains Class</button>
+            <button onclick="listItem()">List Item</button>
+            <button onclick="getValue()">Get Value</button>
+        </div>
+
+        <script src="./script.js"></script>
+    </body>
+</html>
