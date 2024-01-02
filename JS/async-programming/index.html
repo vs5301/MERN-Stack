@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap">
+        <title>Async Programming</title>
+    </head>
+    <body>
+        <header>
+            <h1>setTimeout and setInterval in JS</h1>
+        </header>
+
+        <div class="container1">
+            <h2>setTimeout</h2>
+            <p>
+                The <code>setTimeout</code> function in JS is used to schedule 
+                the execution of a function or code block after a specified delay in
+                milliseconds. It allows you to create time-based delay in your code.
+            </p>
+            <p>Here's an example of using <code>setTimeout</code>:</p>
+            <pre>
+                <code>
+                    setTimeout(function(){
+                        console.log("This code will run after a 2-second delay.")
+                    }, 2000)
+                </code>
+            </pre>
+
+            <h2>setInterval</h2>
+            <p>
+                The <code>setInterval</code> function is used to repeatedly execute a
+                function or code block at a specified time interval in milliseconds. It
+                can be used for tasks such as creating animations or peridically checking
+                for updates
+            </p>
+            <p>Here's an example of using <code>setInterval</code>:</p>
+            <pre>
+                <code>
+                    setInterval(function(){
+                        console.log("This code will run every 3 seconds")
+                    }, 3000)
+                </code>
+            </pre>
+
+            <h2>Conclusion</h2>
+            <p>
+                <code>setTimeout</code> and <code>setInterval</code> are essential
+                functions in JS for managing time-based actions in your code. Understanding
+                their usage is important for building dynamic and interactive web application.
+            </p>
+        </div>
+
+        <br><br>
+
+        <header id="blockCode">
+            <h1>Blocking vs Non-blocking Code in JS</h1>
+        </header>
+        
+        <div class="container2">
+            <h2 class="h2Block">Blocking Code</h2>
+            <p>
+                in JS, blocking code is code that can halt the execution of
+                other code untill it's completed. When a block of code is
+                being executed, it prevents the execution of any subsequent code
+                untill it's finished. This can lead to slow and responsive applications,
+                especially when dealing with time-consuming operations.
+            </p>
+            <p>
+                Here's an example of blocking code that simulates a time-consuming
+                operation:
+            </p>
+            <pre>
+                <code>
+                    function blockingOperation(){
+                        for(let i = 0; i < 1000000000; i++){
+                            // Simulate a time-consuming task
+                        }
+                    }
+
+                    blockOperation();
+                    console.log("This message will be logged after the blocking operation")
+                </code>
+            </pre>
+
+            <h2 class="h2Block">Non-blocking Code</h2>
+            <p>
+                Non-blocking code, on the other hand, allows other code to
+                continue executing while certain tasks are being performed
+                asynchronously. It doesn't halt the execution of subsequent
+                code. This is particularly important in web development, where
+                you want to keep the user interface responsive.
+            </p>
+            <p>
+                Here's an example of non-blocking code using the setTimeout function:
+            </p>
+            <pre>
+                <code>
+                    function nonBlockingOperation(){
+                        setTimeout(function() {
+                            console.log("This message is logged after a delay")
+                        }, 2000)
+                    }
+
+                    nonBlockingOperation();
+                    console.log("This message will be logged immediately")
+                </code>
+            </pre>
+            <h2>Conclusion</h2>
+            <p>
+                Understanding the difference between blocking and non-blocking code is
+                crucial for writing efficient and responsive Javascript applications. Non-
+                blocking code allows you to perform tasks asynchronously, ensuring that
+                your application remains responsive to user interactions
+            </p>
+        </div>  
+
+        <script src="script.js"></script>
+    </body>
+</html>
