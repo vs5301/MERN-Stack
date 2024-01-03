@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Callback Functions & Event Loops</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap">
+    </head>
+    <body>
+        <header>
+            <h1>Callback Functions in JS</h1>
+        </header>
+        <div class="container">
+            <p>
+                A callback function is a function that is passed to another
+                function as an argument and is executed after the first function
+                has completed. Callbacks are often used in asynchronous operations
+                to handle the result or error of the operation.
+            </p>
+            
+            <h2>Basic Example</h2>
+            <p>
+                Below is an example of a function that accepts another function as
+                its argument and calls it as a callback:
+            </p>
+            <pre>
+                <code>
+                    function greetUser(name, callback){
+                    console.log('Hello, ' + name)
+                    callback();
+                    }
+            
+                    function sayGoodbye(){
+                    console.log('Goodbye!')
+                    }
+            
+                    greetUser('Alice', sayGoodbye);
+                    // Expected Output:
+                    // Hello, Alice
+                    // Goodbye
+                </code>
+            </pre>
+            
+            <h2>Callbacks in Asynchronous Operations</h2>
+            <p>
+                Callbacks are often used in asynchronous functions, such as
+                reading files or fetching data from a server. Here's an example
+                using the `setTimeout` function to simulate an asynchronous
+                operation:
+            </p>
+            <pre>
+                <code>
+                    function fetchData(callback){
+                        setTimeout(function() {
+                            let data = 'Sample Data';
+                            callback(data);
+                        }, 2000)
+                    }
+
+                    fetchData(function(data){
+                        console.log(data)
+                    })
+                    // Expected Output (after 2 seconds):
+                    // Sample Data
+                </code>
+            </pre>
+
+            <h2>Conclusion</h2>
+            <p>
+                Callback functions provide a way to manage asynchronous
+                operations and handle result or errors. While they're powerful,
+                it's essential to be cautious with nested callbacks to avoid the
+                "callback hell" scenario. Modern JS offers alternatives like Promises
+                and async/await for better asynchronous code management.
+            </p>
+        </div>
+
+        <header>
+            <h1></h1>
+        </header>
+
+        <div class="container">
+            <h2>Callback Hell Example</h2>
+            <p>
+                In this example, we'll simulate a callback hell scenario by
+                nesting multiple asynchronous functions that require callbacks.
+            </p>
+            <pre>
+                <code>
+                    function step1(callback){
+                        setTimeout(function(){
+                            console.log("Step 1 completed")
+                            callback()
+                        }, 1000)
+                    }
+
+                    function step2(callback){
+                        setTimeout(function(){
+                            console.log("Step 2 completed")
+                            callback();
+                        }, 1000)
+                    }
+
+                    function step3(callback){
+                        setTimeout(function(){
+                            console.log("Step 3 completed")
+                            callback()
+                        }, 1000)
+                    }
+
+                    function finalStep(){
+                        console.log("All steps completed")
+                    }
+
+                    step1(function(){
+                        step2(function (){
+                            step3(function(){
+                                finalStep();
+                            })
+                        })
+                    })
+                </code>
+            </pre>
+            <p>
+                In this example, we have three asynchronous steps, each
+                with a callback. The code demonstrates a scenario where
+                you're forced to nest callbacks, resulting in a less readable
+                and maintainable code structure, commonly referred to as 
+                "callback hell".
+            </p>
+            <p>
+                It's essential to avoid such nested callback structures when
+                working on real projects. Modern JavaScript provides alternatives
+                like Promises and async/await to improve code readability and
+                maintainability.
+            </p>
+        </div>
+
+        <header>
+            <h1>Error Handling in Callbacks</h1>
+        </header>
+        <div class="container">
+            <h2>Error Handling in Callbacks</h2>
+            <p>
+                Error handling in callbacks is essential to handle 
+                unexpected issues gracefully. Here's an example of how
+                to handle errors in a callback function.
+            </p>
+            <pre>
+                <code>
+                    function performTask(callback){
+                        setTimeout(function(){
+                            const isError = Math.random() < 0.5     // Simulating an error condition
+                            if(isError){
+                                callback(new Error('Task failed.'));
+                            } else {
+                                callback(null, 'Task completed successfully.')
+                            }
+                        }, 1000)
+                    }
+
+                    function handleResult(err, result){
+                        if(err){
+                            console.error('Error', err.message)
+                        } else {
+                            console.log('Result:', result)
+                        }
+                    }
+
+                    performTask(handleResult)
+                </code>
+            </pre>
+            <p>
+                In this example, the performTask function simulates a task with a random chance of
+                failing(throwing an error). The handleResult callback handles both success
+                and error cases.   
+            </p>
+            <p>
+                Proper error handling ensures that your application can gracefully
+                handle unexpected errors and provide meaningful feedback to users
+                or log errors for debugging.
+            </p>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
