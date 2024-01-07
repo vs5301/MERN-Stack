@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Promise</title>
+    </head>
+    <body>
+        <header>
+            <h1>Understanding Promises in JavaScript</h1>
+        </header>
+        <div class="container">
+            <h2>What is a Promise?</h2>
+            <p>
+                A Promise in JavaScript is an object representing the eventual
+                completion or failure of an asynchronous operation. Essentially,
+                a promise is a returned object to which you attach callbacks, 
+                instead of passing callbacks into function.
+            </p>
+            <h2>Creating a Promise</h2>
+            <p>You can create a new promise using the 'Promise' constructor:</p>
+            <pre>
+                <code>
+                    const promise = new Promise((resolve, reject) => {
+                        // Do some asynchronous task
+                        setTimeout(() => {
+                            resolve('Data retrieved successfully');
+                            // or
+                            // reject('Error retrieving data');
+                        }, 2000)
+                    })
+                </code>
+            </pre>
+            <h2>Using a Promise</h2>
+            <p>
+                Once a promise has been created, you can use the `.then()`
+                method to handle a successful case or the `.catch()` method
+                to handle an error:
+            </p>
+            <pre>
+                <code>
+                    promise
+                        .then((data) => {
+                            console.log(data)
+                        })
+                        .catch((error) => {
+                            console.error(error)
+                        })
+                </code>
+            </pre>
+            <h2>Chaining Promises</h2>
+            <p>
+                One of the powerful features of promises is the ability to
+                chain them together. This allows for sequential asynchronous
+                operations:
+            </p>
+            <pre>
+                <code>
+                    function fetchData(){
+                        return new Promise((resolve) => {
+                            setTimeout(() => {
+                                resolve('First set of data')
+                            }, 2000)
+                        })
+                    }
+
+                    function fetchMoreData(data){
+                        return new Promise((resolve) => {
+                            setTimeout(() => {
+                                resolve(data + ' and second set of data')
+                            }, 2000)
+                        })
+                    }
+
+                    fetchData()
+                        .then(fetchMoreData)
+                        .then(console.log);
+
+                    // Expected Output (after 4 seconds)
+                    // First set of data and second set of data
+                </code>
+            </pre>
+            <h2>Conclusion</h2>
+            <p>
+                Promises provide a more powerful, flexible, and composable way
+                to work with asynchronous operations in JavaScript. They offer a 
+                cleaner alternative to callbacks and are the foundation for the
+                modern async/await syntax.
+            </p>
+        </div>
+
+        <br><br>
+
+        <header>
+            <h1>Promise Chaining in JavaScript</h1>
+        </header>
+        <div class="container">
+            <h2>Introduction to Promise Chaining</h2>
+            <p>
+                Promise chaining allows you to execute multiple asynchronous
+                operations sequentially. When one promise resolves, its result
+                can be passed on to the next promise in the chain, allowing for
+                a sequence of asynchronous tasks to be performed one after the 
+                other.
+            </p>
+            <h2>Basic Chaining</h2>
+            <p>
+                Each call `.then()` or `.catch()` actually creates and returns a
+                new promise, which resolves when the given handler function completes.
+                This means you can chain additional `.then()` or `.catch()` calls
+                onto it:
+            </p>
+            <pre>
+                <code>
+                    new Promise((resolve, reject) => {
+                    setTimeout(() => resolve(1), 1000)
+                    })
+                    .then(result => {
+                    console.log(result) // 1
+                    return result * 2
+                    })
+                    .then(result => {
+                    console.log(result) // 2
+                    return result * 2
+                    })
+                    .then(result => {
+                    console.log(result) // 4
+                    })
+                </code>
+            </pre>
+            <h2>Error Handling in Chaining</h2>
+            <p>
+                If any promise in the chain rejects, the subsequent promises'
+                handlers will be skipped until a `.catch()` is encountered:
+            </p>
+            <pre>
+                <code>
+                    new Promise((resolve, reject) => {
+                        setTimeout(() => reject(new Error("Whoops!")), 1000)
+                    })
+                    .then(() => 2)
+                    .then(() => 3)
+                    .catch(error => console.error(error.nessage))   // Whoops!
+                </code>
+            </pre>
+            <h2>Returning Promises</h2>
+            <p>
+                In a chain, you can also return another promise, and the chain
+                will wait for that promise to settle:
+            </p>
+            <pre>
+                <code>
+                    new Promise((resolve) => {
+                        setTimeout(() => resolve(1), 1000)
+                    })
+                    .then(result => {
+                        return new Promise((resolve) => {
+                            setTimeout(() => resolve(result * 2), 1000)
+                        })
+                    })
+                    .then(result => {
+                        console.log(result) // 2
+                        return result * 3
+                    })
+                    .then(result => {
+                        console.log(result) // 6
+                    })
+                </code>
+            </pre>
+            <h2>Conclusion</h2>
+            <p>
+                Promise chaining provides a powerful mechanism to handle
+                asynchronous operations in a sequential and orgainsed manner.
+                It allows for better error handling and improved code readability
+                over nested callbacks. With modern JavaScript, async/await
+                further simplifies asynchronous code based on promises, making
+                it even more concise and readable.
+            </p>
+        </div>
+
+        <br><br>
+
+        <header>
+            <h1>Promise.all() and Promise.race() in JavaScript</h1>
+        </header>
+        <div class="container">
+            <h2>Promise.all()</h2>
+            <p>
+                Promise.all() is used when you have multiple promises and you
+                want them all to complete before doing something. It takes an
+                array of promises and returns a new promise that resolves when
+                all of the input promises have resolved.
+            </p>
+            <pre>
+                <code>
+                    const promise1 = Promise.resolve(3)
+                    const promise2 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'foo'))
+                    const promise3 = 42
+            
+                    Promise.all([promise1, promise2, promise3])
+                    .then(values => {
+                    console.log(values) // expected output: [3, 'foo', 42]
+                    })
+                </code>
+            </pre>
+            <p>
+                If any of the promises reject, the promise returned by Promise.all()
+                immediately rejects with the reason of the first promise that rejected,
+                disregarding the resolve status of the other promises.
+            </p>
+            <h2>Promise.race()</h2>
+            <p>
+                Promise.race() is used when you have multiple promises and
+                you are interested in the one that finishes first (either 
+                resolve or rejects). It returns a promise that fulfills or
+                rejects as soon as one of the promises in the iterable fulills
+                or rejects, with the value or reason from that promise.
+            </p>
+            <pre>
+                <code>
+                    const promiseA = new Promise((resolve, reject) => {
+                        setTimeout(() => resolve('A wins!'), 100)
+                    })
+                    const promiseB = new Promise((resolve, reject) => {
+                        setTimeout(() => resolve('B wins!'), 50)
+                    })
+
+                    Promise.race([promiseA, promiseB])
+                        .then(value => {
+                            console.log(value);     // expected value: "B wins!"
+                        })
+                </code>
+            </pre>
+            <h2>Conclusion</h2>
+            <p>
+                Promise.all() and Promise.race() are powerful utilities provided by
+                the JavaScript language to handle multiple promises simultaneously. 
+                They offer a neat way to handle concurrency in asynchronous operations,
+                ensuring that developers can control and dictate the flow of asynchronous
+                code.
+            </p>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
