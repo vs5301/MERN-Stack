@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Await</title>
+    </head>
+    <body>
+        <header>
+            <h1>Understanding Async/Await in JavaScript</h1>
+        </header>
+        <div class="container">
+            <h2>Introduction</h2>
+            <p>
+                The async and await keywords in JavaScript are used to write
+                asynchronous code that is more readable and maintainable. They
+                are built on top of Promises and allow us to write asynchronous
+                code in a way that looks asynchronous.
+            </p>
+            <h2>Async Function</h2>
+            <p>
+                An async function is a function declared with the async keyword.
+                It automatically returns a Promise.
+            </p>
+            <pre>
+                <code>
+                    async function fetchData(){
+                        return 'Data fetched';
+                    }
+
+                    fetchData().then(data => console.log(data));    // Output: 'Data Fetched'
+                </code>
+            </pre>
+            <h2>Await</h2>
+            <p>
+                The await keyword is used to wait for a Promise to  resolve
+                or reject and it can only be used inside and async function.
+                It makes the asynchronous code look synchronous.
+            </p>
+            <pre>
+                <code>
+                    async function fetchData(){
+                        const response = await fetch('https://api/example.com/data');
+                        const data = await response.json()
+                        console.log(data)
+                    }
+                </code>
+            </pre>
+            <p>
+                Here, the second line will not execute until the first line
+                (Promise) resolves, making it easier to read and manage.
+            </p>
+            <h2>Error Handling</h2>
+            <p>
+                You can use try and catch blocks to handle errors in an async function.
+            </p>
+            <pre>
+                <code>
+                    async function fetchData(){
+                        try{
+                            const response = await fetch('https://api.example.com/data')
+                            const data = await response.json()
+                            console.log(data)
+                        } catch(error){
+                            console.log('An error occurred')
+                        }
+                    }
+                </code>
+            </pre>
+            <h2>Conclusion</h2>
+            <p>
+                The <code>async</code> and <code>await</code> keywords make
+                it easier to write clean, readable, and maintainable asynchronous
+                code. They simplify the error-handling process and reduce the 
+                amount of boilerplate code, thereby making the developer's life
+                easier.
+            </p>
+        </div>
+
+        <br><br>
+
+        <header>
+            <h1>Error handling with Async/Await in JavaScript</h1>
+        </header>
+        <div class="container">
+            <h2>Introduction</h2>
+            <p>
+                Error handling in asynchronous programming is crucial for building
+                robust applications. While Promises in JavaScript offer the .catch()
+                method for handling errors, the async/await syntax introduces more
+                straightforward error handling using try, catch, and finally blocks.
+            </p>
+            <h2>Basic Error Handling</h2>
+            <p>
+                The simplest way to handle errors when using async/await is to wrap
+                the await call within a try and catch block.
+            </p>
+            <pre>
+                <code>
+                    async function fetchData(){
+                        try{
+                            const response = await fetch('https://api.example.com/data')
+                            const data = await response.json()
+                            console.log(data)
+                        } catch(error){
+                            console.error('Error fetching data:', error)
+                        }
+                    }
+                </code>
+            </pre>
+            <h2>The Finally Block</h2>
+            <p>
+                The <code>finally</code> block can be added after catch to execute
+                regardless of whether an error was thrown or not.
+            </p>
+            <pre>
+                <code>
+                    async function fetchData(){
+                        try{
+                            const response = await fetch('https://api.example.com/data')
+                            const data = await response.json()
+                        console.log(data)
+                        } catch(error){
+                            console.error('Error fetching data:', error)
+                        } finally{
+                            console.log('End of try catch')
+                        }
+                    }
+                </code>
+            </pre>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
