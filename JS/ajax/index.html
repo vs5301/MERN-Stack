@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap">
+        <title>AJAX</title>
+    </head>
+    <body>
+        <header>
+            <h1>Making HTTP Requests with XMLHttpRequest</h1>
+        </header>
+        <div class="container">
+            <h2>Introduction</h2>
+            <p>
+                XMLHttpRequest is a browser-based API that can be used to
+                send HTTP requests and receive HTTP responses. It plays a
+                crucial role in AJAX programming and allows for asynchronous
+                communication between a client and a server.
+            </p>
+            <h2>Creating an XMLHttpRequest Object</h2>
+            <p>
+                The first step in using the XMLHttpRequest API is to create a
+                new instance of the object.
+            </p>
+            <pre>
+                <code>
+                    const xhr = new XMLHttpRequest()
+                </code>
+            </pre>
+            <h2>Initializing a Request</h2>
+            <p>
+                To make an HTTP request, you'll need to initialize it using
+                the open() method
+            </p>
+            <pre>
+                <code>
+                    xhr.open('GET', 'https://api.example.com/data', true)
+                </code>
+            </pre>
+            <h2>Sending the Request</h2>
+            <p>
+                Once the request has been initialized, the send() method is
+                used to send it.
+            </p>
+            <pre>
+                <code>
+                    xhr.send()
+                </code>
+            </pre>
+            <h2>Handling Responses</h2>
+            <p>
+                You can use the onload and oneerror events to handle successful
+                and failed requests, respectively.
+            </p>
+            <pre>
+                <code>
+                    xhr.onload = function(){
+                        if(xhr.status >= 200 && xhr.status < 3){
+                            console.log('Success: ' , xhr.responseText)
+                        } else{
+                            console.log('Failed: ', xhr.status)
+                        }
+                    }
+
+                    xhr.oneerror = function(){
+                        console.log('Request error...')
+                    }
+                </code>
+            </pre>
+            <h2>Complete Example</h2>
+            <pre>
+                <code>
+                    const xhr = new XMLHttpRequest()
+
+                    xhr.open('GET', 'https://api.example.com/data', true)
+
+                    xhr.send()
+
+                    xhr.onload = function(){
+                        if(xhr.status >= 200 && xhr.status < 3){ 
+                            console.log('Success: ' , xhr.responseText)
+                        } else{
+                            console.log(' Failed: ', xhr.status)
+                        }
+                    }
+                    
+                    xhr.oneerror = function(){
+                        console.log(' Request error...') 
+                    }
+                </code>
+            </pre>
+            <h2>Conclusion</h2>
+            <p>
+                XMLHttpRequest is a powerful tool for making HTTP requests
+                and working with AJAX. While newer technologies like Fetch
+                and Axios are now available, understanding XMLHttpRequest is
+                essential for grasping the underlying mechanics of client-server
+                communication.
+            </p>
+        </div>
+
+        <br><br>
+
+        <header>
+            <h1>Making HTTP Requests with the Fetch API</h1>
+        </header>
+        <div class="container">
+            <h2>Introduction</h2>
+            <p>
+                The Fetch API provides a modern approach to make HTTP requests
+                and handle responses. It returns Promises and is much cleaner
+                and more powerful than the older XMLHttpRequest.
+            </p>
+            <h2>Basic GET Request</h2>
+            <p>
+                To perform a GET request, you can use the fetch() function:
+            </p>
+            <pre>
+                <code>
+                    fetch('https://api.example.com/data')
+                        .then(response => response.json())
+                        .then(data => console.log(data))
+                        .catch(error => console.log('Error: ', error))
+                </code>
+            </pre>
+            <h2>Using async/await</h2>
+            <p>
+                You can also use the Fetch API with async/await for better
+                readabilty.
+            </p>
+            <pre>
+                <code>
+                    async function fetchData(){
+                        try{
+                            const response = await fetch('https://api.example.com/data')
+                            const data = await response.json()
+                            console.log(data)
+                        } catch(error) {
+                            console.log('Error: ', error)
+                        }
+                    }
+
+                    fetchData()
+                </code>
+            </pre>
+            <h2>POST Request</h2>
+            <p>
+                To make a POST request, you need to pass an options object to the
+                fetch() function: 
+            </p>
+            <pre>
+                <code>
+                    fetch('https://api.example.com/data', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type' : 'application/json'
+                        },
+                        body: JSON.stringify({key: 'value'})
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.log('Error: ', error))
+                </code>
+            </pre>
+            <h2>Conclusion</h2>
+            <p>
+                Understanding how to use the Fetch API for making HTTP requests
+                will help you manage client-server interactions in a more modern
+                and cleaner way. It is more flexible and powerful than its predecessor,
+                XMLHttpRequest, and is widely used in moder web development.
+            </p>
+        </div>
+
+        <br><br>
+
+        <header>
+            <h1>Making HTTP Requests with Axios</h1>
+        </header>
+        <div class="container">
+            <h2>Introduction</h2>
+            <p>
+                Axios is a promise-based HTTP client for JavaScript that can be
+                used in both the browser and Node.js environments. It has a
+                straightforward API and can handle requests and responses in JSON
+                format, making it ideal for use with modern web applications.
+            </p>
+            <h2>Installing Axios</h2>
+            <p>
+                You can include Axios in your product by using npm or by including
+                a CDN link in your HTML file.
+            </p>
+            <pre>
+                <code>
+                    // Using npm
+                    npm install axios
+
+                    // Using CDN
+                    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+                </code>
+            </pre>
+            <h2>Basic GET Request</h2>
+            <p>
+                A basic GET request using Axios is simple to implement:
+            </p>
+            <pre>
+                <code>
+                    axios.get('https://api.example.com/items')
+                        .then(response => {
+                            console.log(response.data)
+                        }).catch(error => {
+                            console.log('Error fetching data: ', error)
+                        })
+                </code>
+            </pre>
+            <h2>Using async/await</h2>
+            <p>
+                Axios works seemlessly with async/await:
+            </p>
+            <pre>
+                <code>
+                    async function fetchData(){
+                        try{
+                            const response = await axios.get('https://api.example.com/items')
+                            console.log(response.data)
+                        } catch(error){
+                            console.log('Error fetching data: ', error)
+                        }
+                    }
+
+                    fetchData()
+                </code>
+            </pre>
+            <h2>POST Request</h2>
+            <p>
+                To perform a POST request, you can do the following: 
+            </p>
+            <pre>
+                <code>
+                    axios.post('https://api.example.com/items', {
+                        name: 'New Item',
+                        description: 'New Item Description'
+                    }).then(response => {
+                        console.log('Data has been send: ', response)
+                    }).catch(error => {
+                        console.log('Error sending data: ', error)
+                    })
+                </code>
+            </pre>
+            <h2>Conclusion</h2>
+            <p>
+                Axios provides a clean and easy-to-undertand API for making
+                HTTP requests. It also integrates well with modern JavaScript
+                features like promises and async/await, making it a choice for
+                your HTTP needs.
+            </p>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
