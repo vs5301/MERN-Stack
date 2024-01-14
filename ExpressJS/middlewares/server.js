@@ -16,7 +16,7 @@ app.use(express.urlencoded())
 // Logging details of every request
 const logRequest = (req, res, next) => {
   console.log(
-    `Request recieved at: ${new Date.toISOString()} for ${req.method} to ${req.path}`
+    `Request recieved at: ${new Date().toISOString()} for ${req.method} to ${req.path}`
   );
 
   // call next
@@ -106,4 +106,4 @@ app.use((error, req, res, next) => {
 })
 
 //Start the server
-app.listen(PORT, console.log(`Server is running on port http://localhost: ${PORT}`));
+app.listen(PORT, console.log(`Server is running on port http://localhost:${PORT}`));

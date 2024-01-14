@@ -1,0 +1,26 @@
+{
+  "name": "static-files-ejs",
+  "version": "2.0.1",
+  "description": "Serving static files and template engine",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "keywords": [
+    "static",
+    "files",
+    "ejs",
+    "template",
+    "engine"
+  ],
+  "author": "vs5301",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

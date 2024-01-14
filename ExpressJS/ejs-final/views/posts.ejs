@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Posts</title>
+    </head>
+    <body>
+        <%- include('partials/nav')%>
+        <h1>Posts List <%=posts.length%></h1>
+        <!-- render the post -->
+
+        <%posts.forEach((post) => { %>
+            <p><%= post.title%></p>
+            <p><%= post.desc%></p>
+            <hr>
+        <%})%>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique 
+            tempore culpa eligendi libero praesentium consequatur atque ut repellat 
+            eos minus error vel placeat ab, adipisci vitae earum. Suscipit, nisi 
+            odio!
+        </p>
+    </body>
+</html>

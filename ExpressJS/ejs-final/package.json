@@ -1,0 +1,24 @@
+{
+  "name": "server-static-files",
+  "version": "1.0.0",
+  "description": "Server static files with server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js"
+  },
+  "keywords": [
+    "static",
+    "server",
+    "files"
+  ],
+  "author": "vs5301",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
