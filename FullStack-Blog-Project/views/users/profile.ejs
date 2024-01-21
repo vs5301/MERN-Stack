@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/42a182743f.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e213fdf0db.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/profile.css">
         <link rel="stylesheet" href="/css/style.css">
         <title>Profile</title>
@@ -56,7 +56,7 @@
                     </div>
                     <!-- date joined -->
                     <div class="details">
-                        <i class="fas fa-calender"></i>
+                        <i class="fa fa-calendar-alt"> </i>
                         <p>Date Joined:<%= user?.createdAt.toLocaleDateString() %></p>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                                 </span>
                             </p>
                             <h1 class="post-title"><%= post?.title %></h1>
-                            <p class="post-body"><%= tuncatePost(post?.description) %></p>
+                            <p class="post-body"><%= truncatePost(post?.description) %></p>
                             <!-- category -->
                             <div class="post-category">
                                 <span>Category: <%= post?.category %></span>

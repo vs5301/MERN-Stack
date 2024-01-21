@@ -15,7 +15,7 @@ require("./config/dbConnect");
 const app = express();
 
 //helpers
-app.locals.tuncatePost = truncatePost;
+app.locals.truncatePost = truncatePost;
 
 // middlewares
 

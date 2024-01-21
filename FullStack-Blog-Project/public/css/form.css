@@ -125,3 +125,15 @@ body{
 .form-container .form-wrapper {
     width: 100%;
 }
+
+.register-btn{
+    color: #023047;
+}
+
+.register-option{
+    margin-left: 100px;
+}
+
+.login-option{
+    margin-left: 100px;
+}
