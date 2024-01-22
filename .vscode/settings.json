@@ -1,3 +1,4 @@
 {
-    "editor.columnSelection": false
+    "editor.columnSelection": false,
+    "git.ignoreLimitWarning": true
 }
