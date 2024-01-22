@@ -1,3 +1,4 @@
+import Events from "./components/Events/Events"
 import Message from "./components/Props/Message"
 
 const App = () => {
@@ -9,7 +10,7 @@ const App = () => {
     return (
         <div>
             <h1>App Component</h1>
-            <Message user={user} />
+            <Events />
         </div>
     )
 }
