@@ -1,0 +1,23 @@
+nav{
+    background: white;
+}
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0 20px;
+    padding: 20px;
+}
+
+nav ul li{
+    margin: 0 10px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: purple;
+    font-size: 18px;
+    font-weight: 500;
+}
