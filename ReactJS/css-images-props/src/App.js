@@ -1,3 +1,5 @@
+import Register from "./components/Forms/Register"
+
 const App = () => {
     /*
         const user = {
@@ -8,8 +10,7 @@ const App = () => {
     */
     return (
         <div>
-            <h1>Welcome</h1>
-            <p>This is what we call fragment</p>
+            <Register />
         </div>
     )
 }
