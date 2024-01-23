@@ -1,6 +1,3 @@
-import StatefulComp from "./components/StatelessComp/StatefulComp"
-import StatelessComp from "./components/StatelessComp/StatelessComp"
-
 const App = () => {
     /*
         const user = {
@@ -11,9 +8,8 @@ const App = () => {
     */
     return (
         <div>
-            <h1>App Component</h1>
-            <StatefulComp />
-            <StatelessComp />
+            <h1>Welcome</h1>
+            <p>This is what we call fragment</p>
         </div>
     )
 }
