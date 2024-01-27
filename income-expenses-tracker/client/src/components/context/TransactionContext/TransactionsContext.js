@@ -5,6 +5,7 @@ import {
     TRANSACTION_CREATION_FAIL,
 } from "./transactionActionTypes"
 import { API_URL_TRANSACTION } from "../../../utils/apiURL"
+import { useParams } from "react-router-dom"
 
 export const transactionContext = createContext()
 
@@ -50,11 +51,13 @@ export const TransactionContextProvider = ({ children }) => {
                 },
             }
             // request
+            console.log("Account Data: ",accountData);
             const res = await axios.post(API_URL_TRANSACTION, accountData, config)
             console.log(res);
             if (res?.data?.status === "success") {
                 dispatch({ type: TRANSACTION_CREATION_SUCCESS, payload: res?.data })
             }
+            window.location.href=`/account-details/${accountData.account}`
         } catch (error) {
             dispatch({
                 type: TRANSACTION_CREATION_FAIL,

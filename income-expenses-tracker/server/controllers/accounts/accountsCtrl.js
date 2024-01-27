@@ -17,8 +17,12 @@ const createAccountCtrl = async (req, res, next) => {
             notes,
             createdBy: req.user,
         })
-        // Push the account into users accounts field
-        userFound.account.push(account._id)
+        // Push the account into user's accounts field
+        userFound.account.push({
+            accountId: account._id,
+            name: account.name,
+            accountType: account.accountType
+        })
         // Resave the user
         await userFound.save()
         res.json({

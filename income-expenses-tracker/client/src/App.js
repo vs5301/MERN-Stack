@@ -5,13 +5,15 @@ import HomePage from "./components/HomePage/HomePage"
 import Register from "./components/Forms/Register"
 import AddTransaction from "./components/Forms/AddTransaction"
 import AccountDashboard from "./components/Dashboard/AccountDashboard"
-import AccountDetails from "./components/Forms/AccountDetails"
+import AccountDetails from "./components/Dashboard/AccountDetails"
 import AddAccount from "./components/Forms/AddAccount"
+import Navbar from "./components/Navbar/Navbar"
 
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<Login />} />

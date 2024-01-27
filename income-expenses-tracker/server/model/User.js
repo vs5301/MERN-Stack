@@ -20,11 +20,18 @@ const userSchema = new mongoose.Schema({
     },
     account: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Account",
-        },
+            accountId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Account",
+            },
+            name: String,
+            accountType: String,
+        }
     ],
 }, {
+    strictPopulate: false  
+},
+    {
     timestamps: true,
     toJSON: { virtuals: true },
 })

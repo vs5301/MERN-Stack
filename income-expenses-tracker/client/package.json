@@ -1,16 +1,24 @@
 {
-  "name": "client",
+  "name": "income-expenses-tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@headlessui/react": "^1.7.0",
+    "@heroicons/react": "^2.0.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.6",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "jsonwebtoken": "^9.0.2",
+    "jws": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
+    "stream-browserify": "^3.0.0",
+    "util": "0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -38,10 +46,14 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
     "autoprefixer": "^10.4.17",
+    "html-webpack-plugin": "^5.6.0",
     "init": "^0.1.2",
     "npx": "^10.2.2",
     "postcss": "^8.4.33",
-    "tailwindcss": "^3.4.1"
+    "source-map-loader": "^5.0.0",
+    "tailwindcss": "^3.4.1",
+    "webpack-dev-server": "^4.15.1"
   }
 }

@@ -45,7 +45,7 @@ export default function AddAccount() {
                                     Initial Deposit ($)
                                 </label>
                                 <div className="mt-1">
-                                    <input type="number" value={formData.initialBalance} name="initialBalance" className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+                                    <input type="number" value={formData.initialBalance} onChange={handleChange} name="initialBalance" className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" />
                                 </div>
                             </div>
                             <div>
@@ -77,7 +77,7 @@ export default function AddAccount() {
                                 </div>
                             </div>
                             <div>
-                                <button type="submit" className="flex w-full  justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                <button type="submit" className="flex w-full mt-8 justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                     Add New Transaction
                                 </button>
                             </div>

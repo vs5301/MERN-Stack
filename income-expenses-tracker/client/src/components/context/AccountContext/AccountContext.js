@@ -61,7 +61,7 @@ const accountReducer = (state, action) => {
 // Provider
 export const AccountContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(accountReducer, INITIAL_STATE);
-  console.log(state);
+
   // Get account Details action
   const getAccountDetailsAction = async id => {
     const config = {
@@ -72,6 +72,7 @@ export const AccountContextProvider = ({ children }) => {
     };
     try {
       const res = await axios.get(`${API_URL_ACC}/${id}`, config);
+      console.log("Account context res: ",res?.data?.data);
 
       if (res?.data?.status === "success") {
         // dispatch
@@ -88,7 +89,7 @@ export const AccountContextProvider = ({ children }) => {
     }
   };
 
-  // Get account Details action
+  // Create account action
   const createAccountAction = async formData => {
     console.log(state?.userAuth);
     const config = {
@@ -98,14 +99,17 @@ export const AccountContextProvider = ({ children }) => {
       },
     };
     try {
+      console.log("Form data acocount creation context: ", formData);
       const res = await axios.post(`${API_URL_ACC}`, formData, config);
       if (res?.data?.status === "success") {
-        //dispatch
+        // dispatch
         dispatch({
           type: ACCOUNT_CREATION_SUCCES,
           payload: res?.data?.data,
         });
       }
+      // Redirect
+      window.location.href = "/dashboard"
     } catch (error) {
       console.log(error);
       dispatch({

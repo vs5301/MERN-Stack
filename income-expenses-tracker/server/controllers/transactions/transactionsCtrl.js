@@ -23,7 +23,7 @@ const createTransactionCtrl = async (req, res, next) => {
             name,
             createdBy: req.user
         })
-        // Push the transaction to the amount
+        // Push the transaction to the acount
         accountFound.transactions.push(transaction._id)
         // Resave the account
         await accountFound.save()

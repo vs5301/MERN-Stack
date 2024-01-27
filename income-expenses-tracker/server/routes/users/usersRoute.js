@@ -1,5 +1,5 @@
 const express = require("express")
-const { registerUserCtrl, loginUserCtrl, userProfileCtrl, deleteUserCtrl, updateUserCtrl } = require("../../controllers/users/usersCtrl")
+const { registerUserCtrl, userLoginCtrl, userProfileCtrl, deleteUserCtrl, updateUserCtrl } = require("../../controllers/users/usersCtrl")
 const isLogin = require("../../middlewares/isLogin")
 
 const usersRoute = express.Router()
@@ -8,7 +8,7 @@ const usersRoute = express.Router()
 usersRoute.post("/register", registerUserCtrl)
 
 // POST/api/v1/users/login
-usersRoute.post('/login', loginUserCtrl)
+usersRoute.post('/login', userLoginCtrl)
 
 // GET/api/v1/users/profile/:id
 usersRoute.get('/profile/:id', isLogin, userProfileCtrl)

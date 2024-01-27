@@ -32,6 +32,9 @@ const AllTransactions = ({ transactions, accountID }) => {
                                                 Name
                                             </th>
                                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                Type
+                                            </th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                                 Amount
                                             </th>
                                             <th scope="col" className="px-3 py-3 5 text-left text-sm font-semibold text-gray-900">
@@ -46,7 +49,7 @@ const AllTransactions = ({ transactions, accountID }) => {
                                         {/* loop */}
                                         {transactions?.map(transaction => {
                                             return (
-                                                <tr key={transaction?.email} className={transaction?.color}>
+                                                <tr key={transaction._id} className={transaction?.color}>
                                                     <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                                                         <div className="flex items-center">
                                                             <div className="ml-4">

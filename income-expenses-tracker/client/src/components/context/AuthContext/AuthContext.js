@@ -9,7 +9,9 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
 } from "./authActionTypes"
-import  {API_URL_USER} from "../../../utils/apiURL"
+import { API_URL_USER } from "../../../utils/apiURL"
+
+// import jwt from "jsonwebtoken";
 
 // auth context
 export const authContext = createContext()
@@ -115,7 +117,7 @@ const AuthContextProvider = ({ children }) => {
         }
     }
 
-    // login action
+    // register action
     const registerUserAction = async formData => {
         const config = {
             headers: {
@@ -153,8 +155,10 @@ const AuthContextProvider = ({ children }) => {
                     Authorization: `Bearer ${state?.userAuth?.token}`,
                 },
             }
-            const res = await axios.get(`${API_URL_USER}/profile`, config)
-            console.log(res);
+
+            const userId = state?.userAuth?.id
+            const res = await axios.get(`${API_URL_USER}/profile/${userId}`, config)
+            console.log(res?.data);
             if (res?.data) {
                 dispatch({
                     type: FETCH_PROFILE_SUCCESS,

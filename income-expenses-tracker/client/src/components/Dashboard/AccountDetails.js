@@ -6,11 +6,14 @@ import AllTransactions from "./AllTransactions"
 
 export default function AccountDetails() {
     const { getAccountDetailsAction, account } = useContext(accountContext)
-    const { accountId } = useParams()
+    const { accountID } = useParams()
     useEffect(() => {
-        getAccountDetailsAction(accountId)
-    }, [accountId])
-    console.log(account);
+        console.log(accountID);
+        if (accountID) {
+            getAccountDetailsAction(accountID)
+        }
+    }, [accountID])
+
     // Calculate total income
     const totalIncome = account?.transactions?.reduce((acc, transaction) => {
         if (transaction?.transactionType === "Income") {
@@ -31,13 +34,13 @@ export default function AccountDetails() {
 
     return (
         <div>
-            {account?.transactions?.length <= 0 ? (
+            {account?.transactions?.length === 0 ? (
                 <div>
                     <h2 className="text-center text-red-500 m-10">
                         This account doesn't have any transaction
                     </h2>
                     <div className="text-center">
-                        <Link to={`/add-transaction/${accountId}`}
+                        <Link to={`/add-transaction/${accountID}`}
                             className="relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800">
                             <PlusIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
                             <span>New Transaction</span>
@@ -79,7 +82,7 @@ export default function AccountDetails() {
                                                 <dd className="text-5xl font-bold tracking-tight text-red-600">
                                                     ${totalExpenses}
                                                 </dd>
-                                                <Link to={`/expenses-list/${3}`} className="font-bold tracking-tight text-green-600">
+                                                <Link to={`/expenses-list/${3}`} className="font-bold tracking-tight text-green-600 mt-2">
                                                     View History
                                                 </Link>    
                                             </div>    
@@ -89,7 +92,7 @@ export default function AccountDetails() {
                             </div>
                         </div>
                     </div>  
-                    <AllTransactions transactions={account?.transactions} accountId={accountId} />
+                    <AllTransactions transactions={account?.transactions} accountID={accountID} />
                 </div>
             )}
         </div>

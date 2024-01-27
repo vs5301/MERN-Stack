@@ -6,10 +6,10 @@ import AccountSummary from "./AccountSummary"
 const AccountDashboard = () => {
     const { fetchProfileAction, profile, error } = useContext(authContext)
     
-    // dispatch action
-    useEffect(() => {
-        fetchProfileAction()
-    }, [])
+  // dispatch action
+  useEffect(() => {
+    fetchProfileAction();
+  }, []);
 
     return (
         <div>
@@ -23,7 +23,7 @@ const AccountDashboard = () => {
             ) : (
                     <div>
                         <AccountSummary />
-                        <AccountList accounts={profile?.accounts} />
+                        <AccountList account={profile?.account} />
                 </div>
             )}
         </div>
