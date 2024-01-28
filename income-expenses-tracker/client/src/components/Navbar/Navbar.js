@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
-        <>
+        <div>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between">
               <div className="flex">
@@ -34,7 +34,7 @@ export default function Navbar() {
                     alt="i-novotek"
                   />
                   <img
-                    className="hidden h-8 w-auto lg:block"
+                    className="hidden h-8 mt-1 w-auto lg:block"
                     src={logo}
                     alt="i-novotek"
                   />
@@ -48,24 +48,24 @@ export default function Navbar() {
                   </Link>
 
                   {token && (
-                    <>
-                      <Link
-                        to="/add-transaction"
+                    <div>
+                      {/* <Link
+                        to={`/add-transaction/${id}`}
                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         Add Transaction
-                      </Link>
+                      </Link> */}
                       <Link
                         to="/dashboard"
                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         Dashboard
                       </Link>
-                    </>
+                    </div>
                   )}
 
                   {!token && (
-                    <>
+                    <div>
                       <Link
                         to="/login"
                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -78,9 +78,9 @@ export default function Navbar() {
                       >
                         Register
                       </Link>
-                    </>
+                    </div>
                   )}
-                  <>
+                  <div>
                     {token && (
                       <button
                         onClick={logoutUserAction}
@@ -89,7 +89,7 @@ export default function Navbar() {
                         Logout
                       </button>
                     )}
-                  </>
+                  </div>
                 </div>
               </div>
               {!token && (
@@ -130,9 +130,9 @@ export default function Navbar() {
                 </Link>
               )}
 
-              <>
+              <div>
                 {!token && (
-                  <>
+                  <div>
                     {" "}
                     <Link
                       to="/login"
@@ -146,9 +146,9 @@ export default function Navbar() {
                     >
                       Register
                     </Link>
-                  </>
+                  </div>
                 )}
-              </>
+              </div>
 
               {token && (
                 <button
@@ -160,7 +160,7 @@ export default function Navbar() {
               )}
             </div>
           </Disclosure.Panel>
-        </>
+        </div>
       )}
     </Disclosure>
   );

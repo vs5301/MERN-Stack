@@ -5,9 +5,8 @@ const AccountList = ({ account }) => {
     <div>
         <section className="py-24 bg-white">
             <div className="container px-4 mx-auto">
-            {/* Nt account msg */}
+            {/* No account msg */}
                   <div className="max-w-3xl mx-auto">
-                      <span>{account?.length}</span>
                     {account?.length <= 0 ? (
                     <div>
                         <p className="mb-4 text-xl font-medium text-coolGray-500">
@@ -50,9 +49,12 @@ const AccountList = ({ account }) => {
                             <div key={acc._id} className="group block mb-6">
                                 <div className="flex items-center justify-between flex-wrap p-10 bg-coolGray-50 group-hover:bg-coolGray-100 rounded-md shadow-md transition duration-200">
                                     <div className="w-full md:w-1/2 mb-2 md:mb-0">
-                                        <h3 className="text-lg md:text-xl text-green-500 group-hover:text-coolGray-900 font-semibold">
+                                        <h3 className="text-lg md:text-xl text-stone-800 group-hover:text-coolGray-900 font-semibold">
                                             {acc.name}
                                         </h3>
+                                        <h6 className="text-lg md:text-sm text-orange-950 mt-1 group-hover:text-coolGray-900 font-semibold">
+                                            {acc.accountType}
+                                        </h6>
                                     </div>
                                     <Link to={`/account-details/${acc.accountId}`} key={acc._id}>
                                         <div className="w-full md:w-1/2 md:text-right">
