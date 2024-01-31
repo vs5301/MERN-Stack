@@ -15,7 +15,6 @@ const PORT = process.env.PORT || 9000
 
 // Cron for the trial period : run every single
 cron.schedule("0 0 * * * *", async () => {
-    console.log("This task runs every second");
     try {
         // get the current date
         const today = new Date()
@@ -30,7 +29,6 @@ cron.schedule("0 0 * * * *", async () => {
                 monthlyRequestCount: 5,
             }
         )
-        console.log(updatedUser);
     } catch (error) {
         console.error(error.message);
     }

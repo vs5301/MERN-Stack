@@ -68,13 +68,12 @@ const login = asyncHandler(async (req, res) => {
     const token = jwt.sign({ id: user?._id }, process.env.JWT_SECRET, {
         expiresIn: "3d",    // token expires in 3 days
     })
-    console.log("Token uC: ", token);
 
     // set the token into cookie (http only)
     res.cookie("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        sameSite: "lax",
         maxAge: 24 * 60 * 60 * 1000,  // 1 day
     })
 
@@ -97,9 +96,16 @@ const logout = asyncHandler(async (req, res) => {
 // Profile
 const userProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req?.user?.id)
-        .select("-password")
-        .populate("payment")
+        .select("password")
+        .populate("payments")
         .populate("contentHistory")
+        .populate("username")
+        .populate("email")
+        .populate("trialExpires")
+        .populate("trialActive")
+        .populate("subscriptionPlan")
+        .populate("monthlyRequestCount")
+        .populate("apiRequestCount")
     
     if (user) {
         res.status(200).json({

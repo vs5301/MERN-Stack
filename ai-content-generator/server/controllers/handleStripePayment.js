@@ -10,7 +10,6 @@ const handleStripePayment = asyncHandler(async (req, res) => {
     const { amount, subscriptionPlan } = req.body
     // get the user
     const user = req?.user
-    console.log("User stripe: ", user);
     try {
         // Create payment intent
         const paymentIntent = await stripe.paymentIntents.create({
@@ -31,7 +30,6 @@ const handleStripePayment = asyncHandler(async (req, res) => {
             metadata: paymentIntent?.metadata,
         })
     } catch (error) {
-        console.log(error);
         res.status(500).json({error: error})
     }
 })
@@ -41,7 +39,6 @@ const verifyPayment = asyncHandler(async (req, res) => {
     const { paymentId } = req.params
     try {
         const paymentIntent = await stripe.paymentIntents.retrieve(paymentId)
-        console.log("Payment intent: ",paymentIntent);
         if (paymentIntent.status === "succeeded") {
             // get the info metadata
             const metadata = paymentIntent?.metadata
@@ -112,7 +109,6 @@ const verifyPayment = asyncHandler(async (req, res) => {
             }
         }
     } catch (error) {
-        console.log(error);
         res.status(500).json({ error })
     }
 })
@@ -121,7 +117,6 @@ const verifyPayment = asyncHandler(async (req, res) => {
 const handleFreeSubscription = asyncHandler(async (req, res) => {
     // Get the login user
     const user = req?.user
-    console.log("Free plan: ", user);
 
     // Check if user account should be renew or not
     try {
@@ -156,7 +151,6 @@ const handleFreeSubscription = asyncHandler(async (req, res) => {
             return res.status(403).json({ error: "Subscription renewal not due yet" })
         }
     } catch (error) {
-        console.log(error);
         res.status(500).json({ error })
     }
 })

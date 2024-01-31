@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema(
         },
         trialActive: {
             type: Boolean,
-            required: true,
+            default: true,
         },
         trialExpires: {
             type: Date,
@@ -44,12 +44,14 @@ const userSchema = new mongoose.Schema(
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Payment",
+                strictPopulate: false,
             },
         ],
         contentHistory: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "ContentHistory",
+                strictPopulate: false,
             },
         ],
     },
