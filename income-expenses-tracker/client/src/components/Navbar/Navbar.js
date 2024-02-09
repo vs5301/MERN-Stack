@@ -3,10 +3,11 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/20/solid";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../context/AuthContext/AuthContext";
 
 export default function Navbar() {
+  const navigate = useNavigate()
   const { logoutUserAction, token } = useContext(authContext);
 
   return (
@@ -96,7 +97,7 @@ export default function Navbar() {
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
                     <Link
-                      to="/dashboard"
+                      to="/register"
                       className="relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                     >
                       <PlusIcon
@@ -152,7 +153,7 @@ export default function Navbar() {
 
               {token && (
                 <button
-                  onClick={logoutUserAction}
+                  onClick={logoutUserAction(navigate)}
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Logout

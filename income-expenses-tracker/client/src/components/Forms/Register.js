@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {authContext} from "../context/AuthContext/AuthContext"
 
 const Register = () => {
@@ -16,6 +16,7 @@ const Register = () => {
     const onChangeInput = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
+    const navigate = useNavigate()
 
     // Handle submit
     const onSubmitHandler = (e) => {
@@ -23,7 +24,7 @@ const Register = () => {
         if (!email || !password || !fullname) {
             return alert("Please provide all details")
         }
-        registerUserAction(formData)
+        registerUserAction(formData, navigate)
     }
 
     return (
@@ -60,7 +61,7 @@ const Register = () => {
                             </button>
                             <p className="text-center">
                                 <span className="text-xs font-medium">
-                                    Already have an account? <Link to="/login">Sign In</Link>
+                                    Already have an account? <Link className="inline-block text-xs font-medium text-green-500 hover:text-green-600 hover:underline" to="/login">Sign In</Link>
                                 </span>
                             </p>
                         </div>

@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 import {
     LOGIN_SUCCESS,
     LOGIN_FAILED,
@@ -93,7 +94,8 @@ const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
     // login action
-    const loginUserAction = async formData => {
+    const loginUserAction = async (formData,navigate) => {
+
         const config = {
             headers: {
                 "Content-Type": "application/json",
@@ -108,7 +110,7 @@ const AuthContextProvider = ({ children }) => {
                 })
             }
             // Redirect
-            window.location.href = "/dashboard"
+            navigate("/dashboard")
         } catch (error) {
             dispatch({
                 type: LOGIN_FAILED,
@@ -118,7 +120,7 @@ const AuthContextProvider = ({ children }) => {
     }
 
     // register action
-    const registerUserAction = async formData => {
+    const registerUserAction = async (formData,navigate) => {
         const config = {
             headers: {
                 "Content-Type":"application/json",
@@ -137,7 +139,7 @@ const AuthContextProvider = ({ children }) => {
                 })
             }
             // Redirect
-            window.location.href = "/login"
+            navigate("/login") 
         } catch (error) {
             dispatch({
                 type: REGISTER_FAIL,
@@ -174,13 +176,13 @@ const AuthContextProvider = ({ children }) => {
     }
 
     // Logout
-    const logoutUserAction = () => {
+    const logoutUserAction = (navigate) => {
         dispatch({
             type: LOGOUT,
             payload: null,
         })
         // Redirect
-        window.location.href = "/login"
+        navigate("/login")
     }
     return (
         <authContext.Provider

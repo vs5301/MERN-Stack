@@ -90,7 +90,7 @@ export const AccountContextProvider = ({ children }) => {
   };
 
   // Create account action
-  const createAccountAction = async formData => {
+  const createAccountAction = async (formData, navigate) => {
     console.log(state?.userAuth);
     const config = {
       headers: {
@@ -109,7 +109,7 @@ export const AccountContextProvider = ({ children }) => {
         });
       }
       // Redirect
-      window.location.href = "/dashboard"
+      navigate("/dashboard")
     } catch (error) {
       console.log(error);
       dispatch({

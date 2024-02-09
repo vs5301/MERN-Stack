@@ -5,7 +5,6 @@ import {
     TRANSACTION_CREATION_FAIL,
 } from "./transactionActionTypes"
 import { API_URL_TRANSACTION } from "../../../utils/apiURL"
-import { useParams } from "react-router-dom"
 
 export const transactionContext = createContext()
 
@@ -41,7 +40,7 @@ export const TransactionContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(transactionReducer, INITIAL_STATE)
 
     // create account
-    const createTransactionAction = async accountData => {
+    const createTransactionAction = async (accountData, navigate) => {
         try {
             // header
             const config = {
@@ -57,7 +56,7 @@ export const TransactionContextProvider = ({ children }) => {
             if (res?.data?.status === "success") {
                 dispatch({ type: TRANSACTION_CREATION_SUCCESS, payload: res?.data })
             }
-            window.location.href=`/account-details/${accountData.account}`
+            navigate(`/account-details/${accountData.account}`)
         } catch (error) {
             dispatch({
                 type: TRANSACTION_CREATION_FAIL,

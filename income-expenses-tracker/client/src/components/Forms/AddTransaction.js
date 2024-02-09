@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { transactionContext } from "../context/TransactionContext/TransactionsContext"
 
 export default function AddTransaction() {
@@ -14,6 +14,7 @@ export default function AddTransaction() {
         color: "",
         date: ""
     })
+    const navigate = useNavigate()
 
     // handle form change
     const handleChange = e => {
@@ -23,7 +24,7 @@ export default function AddTransaction() {
     // handle form submit
     const handleSubmit = e => {
         e.preventDefault()
-        createTransactionAction({ account: id, ...formData })
+        createTransactionAction({ account: id, ...formData }, navigate)
     }
 
     return (

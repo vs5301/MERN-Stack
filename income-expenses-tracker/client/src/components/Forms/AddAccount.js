@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import {accountContext} from "../context/AccountContext/AccountContext"
+import { useNavigate } from 'react-router-dom'
 
 export default function AddAccount() {
     const { createAccountAction, error } = useContext(accountContext)
@@ -9,6 +10,7 @@ export default function AddAccount() {
         initialBalance: "",
         notes: "",
     })
+    const navigate = useNavigate()
 
     // handle form change
     const handleChange = e => {
@@ -18,7 +20,7 @@ export default function AddAccount() {
     // handle form submit
     const handleSubmit = e => {
         e.preventDefault()
-        createAccountAction(formData)
+        createAccountAction(formData, navigate)
     }
 
     return (

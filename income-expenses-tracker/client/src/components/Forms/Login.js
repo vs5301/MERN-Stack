@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react'
+import { Link, useNavigate } from "react-router-dom"
 import { authContext } from "../context/AuthContext/AuthContext"
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
     password: "",
   })
   const { email, password } = formData
+  const navigate = useNavigate()
   
   // onChange
   const onChangeInput = e => {
@@ -20,7 +22,7 @@ const Login = () => {
     e.preventDefault()
 
     // dispatch action
-    loginUserAction(formData)
+    loginUserAction(formData, navigate)
   }
   console.log(userAuth);
   return (
@@ -43,13 +45,13 @@ const Login = () => {
                 <label htmlFor="email" className="block mb-2 text-coolGray-800 font-medium">
                   Email
                 </label>
-                <input type="email" name="email" value={email} onChange={onChangeInput} placeholder="support@example.com" className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lgshadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" />
+                <input type="email" name="email" value={email} autoComplete='email' onChange={onChangeInput} placeholder="support@example.com" className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lgshadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" />
               </div>
               <div className="mb-4">
                 <label htmlFor="password" className="block mb-2 text-coolGray-800 font-medium">
                   Password
                 </label>
-                <input type="password" value={password} name="password" placeholder="**********" onChange={onChangeInput} className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lgshadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" />
+                <input type="password" value={password} name="password" placeholder="**********" autoComplete='current password' onChange={onChangeInput} className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lgshadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" />
               </div>
               <div className="flex flex-wrap items-center justify-between mb-6">
                 <div className="w-full md:w-1/2">
@@ -63,11 +65,9 @@ const Login = () => {
               </button>
               <p className="text-center">
                 <span className="text-xs font-medium">
-                  Don't have an account? <a href="/#">Sign Up</a>
+                  Don't have an account?&nbsp;
                 </span>
-                <button type="submit" className="inline-block text-xs font-medium text-green-500 hover:text-green-600 hover:underline">
-                  Sign Up
-                </button>
+                <Link className="inline-block text-xs font-medium text-green-500 hover:text-green-600 hover:underline" to="/register">Sign Up</Link>
               </p>
             </form>
           </div>
