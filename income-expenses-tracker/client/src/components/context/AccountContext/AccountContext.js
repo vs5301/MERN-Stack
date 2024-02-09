@@ -72,7 +72,6 @@ export const AccountContextProvider = ({ children }) => {
     };
     try {
       const res = await axios.get(`${API_URL_ACC}/${id}`, config);
-      console.log("Account context res: ",res?.data?.data);
 
       if (res?.data?.status === "success") {
         // dispatch
@@ -91,7 +90,6 @@ export const AccountContextProvider = ({ children }) => {
 
   // Create account action
   const createAccountAction = async (formData, navigate) => {
-    console.log(state?.userAuth);
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +97,6 @@ export const AccountContextProvider = ({ children }) => {
       },
     };
     try {
-      console.log("Form data acocount creation context: ", formData);
       const res = await axios.post(`${API_URL_ACC}`, formData, config);
       if (res?.data?.status === "success") {
         // dispatch
@@ -111,7 +108,6 @@ export const AccountContextProvider = ({ children }) => {
       // Redirect
       navigate("/dashboard")
     } catch (error) {
-      console.log(error);
       dispatch({
         type: ACCOUNT_CREATION_FAIL,
         payload: error?.data?.response?.message,

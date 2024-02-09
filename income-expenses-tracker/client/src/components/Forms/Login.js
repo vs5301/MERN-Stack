@@ -4,13 +4,14 @@ import { authContext } from "../context/AuthContext/AuthContext"
 
 const Login = () => {
   const { loginUserAction, userAuth } = useContext(authContext)
+  const navigate = useNavigate()
+
   // form data
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   })
   const { email, password } = formData
-  const navigate = useNavigate()
   
   // onChange
   const onChangeInput = e => {
@@ -24,7 +25,7 @@ const Login = () => {
     // dispatch action
     loginUserAction(formData, navigate)
   }
-  console.log(userAuth);
+
   return (
     <div>
       <section className="py-24 md:py-32 bg-white">

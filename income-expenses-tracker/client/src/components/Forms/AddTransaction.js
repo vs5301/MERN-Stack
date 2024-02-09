@@ -5,6 +5,7 @@ import { transactionContext } from "../context/TransactionContext/TransactionsCo
 export default function AddTransaction() {
     const { id } = useParams()
     const { createTransactionAction, error } = useContext(transactionContext)
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: "",
         transactionType: "",
@@ -14,7 +15,6 @@ export default function AddTransaction() {
         color: "",
         date: ""
     })
-    const navigate = useNavigate()
 
     // handle form change
     const handleChange = e => {

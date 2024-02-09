@@ -1,6 +1,5 @@
 import { createContext, useReducer } from "react";
 import axios from "axios"
-import { useNavigate } from 'react-router-dom'
 import {
     LOGIN_SUCCESS,
     LOGIN_FAILED,
@@ -11,8 +10,6 @@ import {
     REGISTER_FAIL,
 } from "./authActionTypes"
 import { API_URL_USER } from "../../../utils/apiURL"
-
-// import jwt from "jsonwebtoken";
 
 // auth context
 export const authContext = createContext()
@@ -94,7 +91,7 @@ const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
     // login action
-    const loginUserAction = async (formData,navigate) => {
+    const loginUserAction = async (formData, navigate) => {
 
         const config = {
             headers: {
@@ -109,7 +106,8 @@ const AuthContextProvider = ({ children }) => {
                     payload: res.data,
                 })
             }
-            // Redirect
+
+            // Redirect logic here
             navigate("/dashboard")
         } catch (error) {
             dispatch({
@@ -120,7 +118,7 @@ const AuthContextProvider = ({ children }) => {
     }
 
     // register action
-    const registerUserAction = async (formData,navigate) => {
+    const registerUserAction = async (formData, navigate) => {
         const config = {
             headers: {
                 "Content-Type":"application/json",
@@ -138,8 +136,8 @@ const AuthContextProvider = ({ children }) => {
                     payload: res.data,
                 })
             }
-            // Redirect
-            navigate("/login") 
+            // Redirect logic here
+            navigate("/login")
         } catch (error) {
             dispatch({
                 type: REGISTER_FAIL,
@@ -160,7 +158,6 @@ const AuthContextProvider = ({ children }) => {
 
             const userId = state?.userAuth?.id
             const res = await axios.get(`${API_URL_USER}/profile/${userId}`, config)
-            console.log(res?.data);
             if (res?.data) {
                 dispatch({
                     type: FETCH_PROFILE_SUCCESS,
@@ -176,14 +173,13 @@ const AuthContextProvider = ({ children }) => {
     }
 
     // Logout
-    const logoutUserAction = (navigate) => {
+    const logoutUserAction = () => {
         dispatch({
             type: LOGOUT,
             payload: null,
         })
-        // Redirect
-        navigate("/login")
     }
+    
     return (
         <authContext.Provider
             value={{

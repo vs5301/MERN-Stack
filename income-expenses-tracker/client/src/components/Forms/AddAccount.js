@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom'
 
 export default function AddAccount() {
     const { createAccountAction, error } = useContext(accountContext)
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: "",
         accountType: "",
         initialBalance: "",
         notes: "",
     })
-    const navigate = useNavigate()
 
     // handle form change
     const handleChange = e => {

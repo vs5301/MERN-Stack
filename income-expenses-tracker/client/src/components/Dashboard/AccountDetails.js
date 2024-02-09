@@ -8,7 +8,6 @@ export default function AccountDetails() {
     const { getAccountDetailsAction, account } = useContext(accountContext)
     const { accountID } = useParams()
     useEffect(() => {
-        console.log(accountID);
         if (accountID) {
             getAccountDetailsAction(accountID)
         }

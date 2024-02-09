@@ -7,8 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../context/AuthContext/AuthContext";
 
 export default function Navbar() {
-  const navigate = useNavigate()
   const { logoutUserAction, token } = useContext(authContext);
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logoutUserAction()
+    navigate("/login")
+  }
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -84,7 +89,7 @@ export default function Navbar() {
                   <div>
                     {token && (
                       <button
-                        onClick={logoutUserAction}
+                        onClick={handleLogout}
                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         Logout
@@ -153,7 +158,7 @@ export default function Navbar() {
 
               {token && (
                 <button
-                  onClick={logoutUserAction(navigate)}
+                  onClick={handleLogout}
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Logout

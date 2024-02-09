@@ -4,6 +4,8 @@ import {authContext} from "../context/AuthContext/AuthContext"
 
 const Register = () => {
     const { registerUserAction, error } = useContext(authContext)
+    const navigate = useNavigate()
+    
     // form data
     const [formData, setFormData] = useState({
         fullname: "",
@@ -16,7 +18,6 @@ const Register = () => {
     const onChangeInput = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
-    const navigate = useNavigate()
 
     // Handle submit
     const onSubmitHandler = (e) => {
@@ -41,19 +42,19 @@ const Register = () => {
                             <label htmlFor="Email" className="block mb-2 text-coolGray-800 font-medium">
                                 Email
                             </label>
-                            <input type="email" name="email" value={email} onChange={onChangeInput} className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-sm placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" placeholder="service@example.com" />
+                            <input type="email" name="email" autoComplete="email" value={email} onChange={onChangeInput} className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-sm placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" placeholder="service@example.com" />
                         </div>
                         <div className="mb-6">
                             <label htmlFor="fullname" className="block mb-2 text-coolGray-800 font-medium">
                                 Full Name
                             </label>
-                            <input type="text" value={fullname} onChange={onChangeInput} name="fullname" className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-sm placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" placeholder="I-Novotek Academy"/>
+                            <input type="text" autoComplete="full name" value={fullname} onChange={onChangeInput} name="fullname" className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-sm placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" placeholder="I-Novotek Academy"/>
                         </div>
                         <div className="mb-4">
                             <label htmlFor="" className="block mb-2 text-coolGray-800 font-medium">
                                 Password
                             </label>
-                            <input type="password" name="password" value={password} onChange={onChangeInput} className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-sm placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" placeholder='************' />
+                            <input type="password" name="password" autoComplete="password" value={password} onChange={onChangeInput} className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-sm placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" placeholder='************' />
                         </div>
                         <div className="flex flex-wrap items-center justify-between mb-6">
                             <button className="inline-block py-3 px-7 mb-6 w-full text-base text-green-50 font-medium text-center leading-6 bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md shadow-sm" type="submit">
