@@ -85,7 +85,6 @@ const userProfileCtrl = async (req, res, next) => {
     });
     res.json(user);
   } catch (error) {
-    console.log(new AppErr(error.message, 500));
     next(new AppErr(error.message, 500));
   }
 };
