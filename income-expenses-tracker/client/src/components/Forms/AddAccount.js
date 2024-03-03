@@ -54,7 +54,7 @@ export default function AddAccount() {
             {isLoading ? (
                 <Loading /> 
             ) : (
-                <div className="flex min-h full flex-col justify-center py-12 sm:px-6 lg:px-8">
+                <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-md">
                         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
                             Add Account
@@ -65,7 +65,7 @@ export default function AddAccount() {
                             )}
                         </p>
                     </div>
-                    <div className="mt-8 sm:mx-auto sm:w full sm:max-w-md">
+                    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                             <form onSubmit={handleSubmit} className="space-y6">
                                 <div>
@@ -93,10 +93,10 @@ export default function AddAccount() {
                                         <option value="Investment">Investment</option>
                                         <option value="Checking">Checking</option>
                                         <option value="Credit Card">Credit Card</option>
-                                        <option value="Utilties">Utilties</option>
+                                        <option value="Utilties">Utilities</option>
                                         <option value="Billing">Billing</option>
                                         <option value="Travel">Travel</option>
-                                        <option value="Education">Education</option>
+                                        <option value="Loan">Loan</option>
                                         <option value="Personal">Personal</option>
                                         <option value="Groceries">Groceries</option>
                                         <option value="Entertainment">Entertainment</option>

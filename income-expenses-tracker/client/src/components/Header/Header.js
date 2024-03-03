@@ -5,7 +5,7 @@ const Header = () => {
         <div>
             <section className="relative bg-white overflow-hidden">
                 <div className="bg-transparent">
-                    <div className="navbar-menu hidden fixed top-0 left-0 z-50 w-full h-full bg-coolGray-900 bg-opactiy-50">
+                    <div className="navbar-menu hidden fixed top-0 left-0 z-50 w-full h-full bg-gray-900 bg-opactiy-50">
                         <div className="fixed top-0 left-0 bottom-0 w-full max-w-xs bg-white">
                             <a href="/#" className="navbar-close absolute top-5 p-4 right-3">
                                 <svg width={12} height={12} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +21,7 @@ const Header = () => {
                     <div className="container px-4 mx-auto">
                         <div className="flex flex-wrap xl:items-center -mx-4">
                             <div className="w-full md:w-1/2 px-4 mb-16 md:mb-0">
-                                <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-white bg-green-500 uppercase rounded-9xl">
+                                <span className="inline-block py-px px-3 mb-4 text-xs leading-5 text-white bg-green-500 uppercase rounded-full">
                                     Project Income-Expenses Tracker
                                 </span>
                                 <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">
@@ -34,12 +34,12 @@ const Header = () => {
                                 </p>
                                 <div className="flex flex-wrap">
                                     <div className="w-full md:w-auto py-1 md:py-0 md:mr-4">
-                                        <a href="/#" className="inline-block py-5 px- w-full text-base md:text-lg leading-4 text-green-50 font-medium text-center bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 border border-green-500 rounded-md shadow-sm">
+                                        <a href="/#" className="inline-block py-5 px-4 w-full text-base md:text-lg leading-4 text-green-50 font-medium text-center bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 border border-green-500 rounded-2xl shadow-sm">
                                             Request a Demo
                                         </a>
                                     </div>
                                     <div className="w-full md:w-auto py-1 md:py-0">
-                                        <a href="/register" className="inline-block py-5 px-7 w-full text-base md:text-lg leading-4 text-coolGray-800 font-medium text-center bg-white hover:bg-coolGray-100 focus:ring-2 focus:ring-coolGray-200 focus:ring-opacity-50 border border-coolGray-200 rounded-md shadow-sm">
+                                        <a href="/register" className="inline-block py-5 px-7 w-full text-base md:text-lg leading-4 text-coolGray-800 font-medium text-center bg-white hover:bg-gray-200 focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50 border border-gray-200 rounded-md shadow-sm">
                                             Sign Up
                                         </a>
                                     </div>

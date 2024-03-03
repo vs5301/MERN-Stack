@@ -4,7 +4,7 @@ const AccountSummary = () => {
     return (
         <div>
             <div className="max-w-4xl mx-auto mb-12 text-center">
-                <h3 className="mb-4 text-3xl md:text-4xl leading-tight text-coolGray-900 font-bold tracking-tighter">
+                <h3 className="mb-4 mt-5 text-3xl md:text-4xl leading-tight text-coolGray-900 font-bold tracking-tighter">
                     Total Income/Expenses of All Accounts
                 </h3>
                 <p className="text-lg md:text-xl text-coolGray-500 font-medium">
